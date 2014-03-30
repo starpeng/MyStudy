@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>Type Write</title>
+    <style type="text/css">
+        #poesy p
+        {
+           line-height:28px;
+        }
+    </style>
+</head>
+<body>
+    <div id="poesy">
+        <h3 class="title">《沁园春·雪》</h3>
+<p>
+<b>作者:<a href="http://baike.baidu.com/subview/1689/11849262.htm" target="_blank">毛泽东</a></b>
+<br />
+<br />
+北国风光，千里冰封，万里雪飘。<br />
+望长城内外，惟馀莽莽；大河上下，顿失滔滔。<br />
+山舞银蛇，原驰蜡象，欲与天公试比高。<br />
+须晴日，看红妆素裹，分外妖娆。<br />
+<br />
+江山如此多娇，<br />
+引无数英雄竞折腰。<br />
+惜秦皇汉武，略输文采；唐宗宋祖，稍逊风骚。<br />
+一代天骄，成吉思汗，只识弯弓射大雕。<br />
+俱往矣，数风流人物，还看今朝。<br />
+<br />
+</p>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    function typeWriter(id, speed) {
+        var ele = document.getElementById(id);
+        speed = speed || 80;
+        if (ele) {
+            var content = ele.innerHTML, currentIndex = 0;
+            ele.innerHTML = "";
+            var timer = setInterval(function () {
+                var currentChar = content.substr(currentIndex, 1);
+                if (currentChar == "<") {
+                    currentIndex = content.indexOf(">", currentIndex) + 1;
+                } else {
+                    currentIndex++;
+                }
+
+                var isLast = content.length <= currentIndex;
+                if (!isLast) {
+                    ele.innerHTML = content.substring(0, currentIndex) + "_";
+                } else {
+                    ele.innerHTML = content;
+                    clearInterval(timer);
+                }
+            }, speed);
+        }
+    }
+
+    typeWriter('poesy');
+</script>
